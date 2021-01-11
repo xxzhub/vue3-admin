@@ -12,14 +12,13 @@ module.exports = {
   assetsDir: 'assets',
   devServer: {
     port,
-    host: '192.168.31.75',
+    // host: '192.168.0.103',
     open: true,
     hot: true
   },
   configureWebpack: {
     name,
     resolve: {
-
       alias: {
         '@': resolve('src')
       }
