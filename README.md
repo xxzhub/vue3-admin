@@ -4,4 +4,4 @@
 
 ## 技术栈
 
-vue3+typescript+elementPlus
+- vue3.0+typescript+elementPlus
