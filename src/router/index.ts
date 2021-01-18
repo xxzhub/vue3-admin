@@ -1,22 +1,25 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
+import type { App } from 'vue'
+import {scrollBehavior} from './scrollBehavior'// 滚动条位置
+
+import { basicRoutes } from './routes/';//基础路由
+
 import login from '@/views/login/index.vue'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'login',
-    component: login
-  },
-  {
-    path: '/user',
-    name: 'user',
-    component: () => import('@/views/user/index.vue')
-  }
-]
-
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+  history:createWebHistory(),
+  routes: basicRoutes as RouteRecordRaw[],
+  strict:true,
+  scrollBehavior: scrollBehavior
 })
+
+//重置路由
+
+export function resetRouter(){
+  
+}
+
+
 
 export default router

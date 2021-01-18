@@ -1,4 +1,4 @@
-import type { RouteRecordRaw} from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router';
 import type {Component} from '@/components/types' // 组件类型
 import {RoleEnum} from '@/enums/roleEnum'
 
@@ -30,17 +30,55 @@ export interface RouteMeta {
 }
 
 //路由匹配接口
-export interface AppRouteRecordRaw extends Omit<RouteRecordRaw,'meta'> {
+export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, 'meta'> {
   //路由名称
   name:string;
   //路由信息
   meta:RouteMeta;
   //组件
-  component?:Component | string;
+  component?: Component | string;
   //组件列表
-  components?:Component;
+  components?: Component;
   //子组件
   children?:AppRouteRecordRaw[];
   //属性参数
   props?: Recordable;
+  //路由路径
+  fullPath?:string;
 }
+
+//标签接口
+export interface MenuTag {
+  type?: 'primary' | 'error' | 'warn' | 'success';
+  content?:string;
+  dot?:string;
+}
+
+//菜单接口
+export interface Menu {
+  name: string;
+
+  icon?: string;
+
+  path: string;
+
+  disabled?: boolean;
+
+  children?: Menu[];
+
+  orderNo?: number;
+
+  roles?: RoleEnum[];
+
+  meta?: Partial<RouteMeta>;
+
+  tag?: MenuTag;
+}
+
+export interface MenuModule {
+  orderNo?: number;
+  menu: Menu;
+}
+
+
+export type AppRouteModule = AppRouteRecordRaw;
